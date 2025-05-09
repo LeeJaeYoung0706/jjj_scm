@@ -8,11 +8,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/test")
 @RequiredArgsConstructor
-public class TestController {
+public class TestController implements TestSwaggerController {
 
     @GetMapping("/1")
-    public String test1() {
-        return "test1";
+    @Override
+    public String test1(TestDto dto) {
+        return dto.getUserId();
     }
 
 }
