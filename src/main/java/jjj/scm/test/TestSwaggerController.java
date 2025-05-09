@@ -22,7 +22,7 @@ public interface TestSwaggerController {
             value = {
                     //http status 200 일 때 이걸로 리턴
                     @ApiResponse(responseCode = "200" , description = "성공" , content = {
-                            @Content(schema = @Schema(implementation = String.class))
+                            @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))
                     }),
                     //http status 매개인자 익셉션이면
                     @ApiResponse(responseCode = "405" , description = "매개인자 잘못 삽입")
@@ -30,7 +30,7 @@ public interface TestSwaggerController {
     )
     // 매개 변수 도
     String test1(@Parameter(description = "테스트 디티오입니다." , required = true) @RequestBody(
-            content = @Content(examples = {
+            content = @Content(mediaType = "application/json", examples = {
                     @ExampleObject(name = " 테스트 디티오 예제" , value = """
                             {
                                 "userId" : "testId"
